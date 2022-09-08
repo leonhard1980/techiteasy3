@@ -27,16 +27,11 @@ public class TelevisionController {
         List<Television> televisions;
 
         if (brand == null){
-
             televisions = televisionRepository.findAll();
-
             return ResponseEntity.ok().body(televisions);
-
         } else {
-
             televisions = televisionRepository.findAllTelevisionsByBrandEqualsIgnoreCase(brand);
         }
-
         return ResponseEntity.ok().body(televisions);
 
     }
