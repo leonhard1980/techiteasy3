@@ -1,4 +1,4 @@
-package nl.novi.techiteasy1121.Services;
+package nl.novi.techiteasy1121.services;
 
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.Television;
