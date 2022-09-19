@@ -3,6 +3,7 @@ package nl.novi.techiteasy1121.controllers;
 import nl.novi.techiteasy1121.Dtos.TelevisionDto;
 import nl.novi.techiteasy1121.Dtos.TelevisionInputDto;
 import nl.novi.techiteasy1121.Dtos.WallBracketDTO;
+import nl.novi.techiteasy1121.Dtos.WallBracketInputDTO;
 import nl.novi.techiteasy1121.models.WallBracket;
 import nl.novi.techiteasy1121.services.WallBracketService;
 import org.springframework.beans.factory.annotation.Autowired;
