@@ -2,13 +2,11 @@ package nl.novi.techiteasy1121.services;
 
 
 import nl.novi.techiteasy1121.Dtos.RemoteControllerDTO;
-import nl.novi.techiteasy1121.Dtos.TelevisionDto;
+import nl.novi.techiteasy1121.Dtos.RemoteControllerInputDTO;
 import nl.novi.techiteasy1121.Dtos.TelevisionInputDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.RemoteController;
-import nl.novi.techiteasy1121.models.Television;
 import nl.novi.techiteasy1121.repositories.RemoteControllerRepository;
-import nl.novi.techiteasy1121.repositories.TelevisionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -36,7 +34,7 @@ public class RemoteControllerService {
     }
 
     public List<RemoteControllerDTO> getAllRemoteControllersByBrand(String brand) {
-        List<RemoteController> rcList = RemoteControllerRepository.findAllRemoteControllersByBrandEqualsIgnoreCase(brand);
+        List<RemoteController> rcList = remoteControllerRepository.findAllRemoteControllersByBrandEqualsIgnoreCase(brand);
         List<RemoteControllerDTO> rcDtoList = new ArrayList<>();
 
         for(RemoteController rc : rcList) {
@@ -49,26 +47,26 @@ public class RemoteControllerService {
     public RemoteControllerDTO getRemoteControllerById(Long id) {
 
         if (remoteControllerRepository.findById(id).isPresent()){
-            RemoteController rc = RemoteControllerRepository.findById(id).get();
+            RemoteController rc = remoteControllerRepository.findById(id).get();
             return transferToDto(rc);
         } else {
             throw new RecordNotFoundException("geen remote controller gevonden");
         }
     }
 
-    public RemoteControllerDTO addRemoteController(RemoteControllerInputDto dto) {
+    public RemoteControllerDTO addRemoteController(RemoteControllerInputDTO dto) {
 
         RemoteController rc = transferToRemoteController(dto);
-        RemoteControllerRepository.save(rc);
+        remoteControllerRepository.save(rc);
 
         return transferToDto(rc);
     }
 
     public void deleteRemoteController(@RequestBody Long id) {
-        RemoteControllerRepository.deleteById(id);
+        remoteControllerRepository.deleteById(id);
     }
 
-    public RemoteControllerDTO updateRemoteController(Long id, TelevisionInputDto inputDto) {
+    public RemoteControllerDTO updateRemoteController(Long id, RemoteControllerInputDTO inputDto) {
 
         if (remoteControllerRepository.findById(id).isPresent()){
 
@@ -89,7 +87,7 @@ public class RemoteControllerService {
 
     }
 
-    public RemoteController transferToRemoteController(RemoteControllerInputDto dto){
+    public RemoteController transferToRemoteController(RemoteControllerInputDTO dto){
         var remotecontroller = new RemoteController();
 
         remotecontroller.setId(dto.getId());

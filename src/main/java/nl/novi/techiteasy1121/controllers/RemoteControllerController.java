@@ -1,10 +1,8 @@
 package nl.novi.techiteasy1121.controllers;
 
 import nl.novi.techiteasy1121.Dtos.RemoteControllerDTO;
-import nl.novi.techiteasy1121.Dtos.TelevisionDto;
-import nl.novi.techiteasy1121.Dtos.TelevisionInputDto;
+import nl.novi.techiteasy1121.Dtos.RemoteControllerInputDTO;
 import nl.novi.techiteasy1121.services.RemoteControllerService;
-import nl.novi.techiteasy1121.services.TelevisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,13 +26,9 @@ private final RemoteControllerService remoteControllerService;
         List<RemoteControllerDTO> dtos;
 
         if (brand.isEmpty()){
-
             dtos = remoteControllerService.getAllRemoteControllers();
-
         } else {
-
             dtos = remoteControllerService.getAllRemoteControllersByBrand(brand.get());
-
         }
 
         return ResponseEntity.ok().body(dtos);
@@ -44,34 +38,30 @@ private final RemoteControllerService remoteControllerService;
     @GetMapping("/remoteControllers/{id}")
     public ResponseEntity<RemoteControllerDTO> getAllRemoteControllers(@PathVariable("id")Long id) {
 
-        RemoteControllerDTO remoteController = remoteControllerService.getRemoteControllersById(id);
-
+        RemoteControllerDTO remoteController = remoteControllerService.getRemoteControllerById(id);
         return ResponseEntity.ok().body(remoteController);
 
     }
 
     @PostMapping("/remotecontrollers")
-    public ResponseEntity<Object> addRemoteControllers(@RequestBody RemoteControllerInputDto remoteControllerInputDto) {
-
-        TelevisionDto dto = remoteControllerService.addRemoteController(remoteControllerInputDto);
-
+    public ResponseEntity<Object> addRemoteControllers(@RequestBody RemoteControllerInputDTO remoteControllerInputDto) {
+        RemoteControllerDTO dto = remoteControllerService.addRemoteController(remoteControllerInputDto);
         return ResponseEntity.created(null).body(dto);
 
     }
 
     @DeleteMapping("/remotecontrollers/{id}")
     public ResponseEntity<Object> deleteRemoteController(@PathVariable Long id) {
-
-        RemoteControllerService.deleteRemoteController(id);
+        remoteControllerService.deleteRemoteController(id);
 
         return ResponseEntity.noContent().build();
 
     }
 
     @PutMapping("/remotecontrollers/{id}")
-    public ResponseEntity<Object> updateRemoteController(@PathVariable Long id, @RequestBody RemoteControllerInputDto newRemoteController) {
+    public ResponseEntity<Object> updateRemoteController(@PathVariable Long id, @RequestBody RemoteControllerInputDTO newRemoteController) {
 
-        RemoteControllerDTO dto = RemoteControllerService.updateRemoteController(id, newRemoteController);
+        RemoteControllerDTO dto = remoteControllerService.updateRemoteController(id, newRemoteController);
 
         return ResponseEntity.ok().body(dto);
     }

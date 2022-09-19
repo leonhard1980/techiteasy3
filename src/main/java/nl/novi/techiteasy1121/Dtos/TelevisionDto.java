@@ -53,6 +53,9 @@ public class TelevisionDto {
     private Integer originalStock;
     private Integer sold;
 
+    // hier de relatie met Wallbracket en CI module, en Remote Controller.
+    // (one to many etc. dit staat boven een entiteit, dus niet hier)
+    // hier private Wallbracket, ci en remote, dan ook getters en setters en de constructor uitbreiden.
     public TelevisionDto() {
     }
 

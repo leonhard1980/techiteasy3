@@ -1,6 +1,7 @@
 package nl.novi.techiteasy1121.Dtos;
 
-public class RemoteControllerDTO {
+public class RemoteControllerInputDTO {
+
     private Long id;
     private String compatibleWith;
     private String batteryType;
@@ -9,14 +10,7 @@ public class RemoteControllerDTO {
     private Double price;
     private Integer originalStock;
 
-    //lege constructor
-    public RemoteControllerDTO() {
-    }
-    public RemoteControllerDTO(Long id) {
-        this.id = id;
-    }
-//volledige constructor
-    public RemoteControllerDTO(Long id, String compatibleWith, String batteryType, String name, String brand, Double price, Integer originalStock) {
+    public RemoteControllerInputDTO(Long id, String compatibleWith, String batteryType, String name, String brand, Double price, Integer originalStock) {
         this.id = id;
         this.compatibleWith = compatibleWith;
         this.batteryType = batteryType;
@@ -26,7 +20,6 @@ public class RemoteControllerDTO {
         this.originalStock = originalStock;
     }
 
-    //getters en setters
     public Long getId() {
         return id;
     }

@@ -28,11 +28,8 @@ public class TelevisionController {
         if (brand.isEmpty()){
 
             dtos = televisionService.getAllTelevisions();
-
         } else {
-
             dtos = televisionService.getAllTelevisionsByBrand(brand.get());
-
         }
 
         return ResponseEntity.ok().body(dtos);
