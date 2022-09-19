@@ -3,7 +3,6 @@ package nl.novi.techiteasy1121.services;
 
 import nl.novi.techiteasy1121.Dtos.RemoteControllerDTO;
 import nl.novi.techiteasy1121.Dtos.RemoteControllerInputDTO;
-import nl.novi.techiteasy1121.Dtos.TelevisionInputDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.RemoteController;
 import nl.novi.techiteasy1121.repositories.RemoteControllerRepository;

@@ -3,9 +3,7 @@ package nl.novi.techiteasy1121.services;
 import nl.novi.techiteasy1121.Dtos.*;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.CIModule;
-import nl.novi.techiteasy1121.models.RemoteController;
 import nl.novi.techiteasy1121.repositories.CIModulesRepository;
-import nl.novi.techiteasy1121.repositories.RemoteControllerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
