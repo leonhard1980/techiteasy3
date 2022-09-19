@@ -1,6 +1,9 @@
 package nl.novi.techiteasy1121.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Television {
@@ -9,6 +12,11 @@ public class Television {
     @Id
     @GeneratedValue
     Long id;
+
+
+    @OneToOne(mappedBy = "televisions")
+    @JsonIgnore
+    List<Television> televisions;
 
     //  variable declaraties
     private String type;

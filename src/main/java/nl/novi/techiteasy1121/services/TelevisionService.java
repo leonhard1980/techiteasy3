@@ -1,19 +1,43 @@
 package nl.novi.techiteasy1121.services;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.Television;
+import nl.novi.techiteasy1121.repositories.RemoteControllerRepository;
 import nl.novi.techiteasy1121.repositories.TelevisionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.OneToOne;
 import java.util.List;
 
 @Service
 public class TelevisionService {
      private final TelevisionRepository televisionRepository;
+    private final RemoteControllerRepository remoteControllerRepository;
 
     public TelevisionService(TelevisionRepository televisionRepository) {
         this.televisionRepository = televisionRepository;
     }
+
+    @Autowired
+    public TelevisionService (TelevisionRepository televisionRepository, RemoteControllerRepository remoteControllerRepository) {
+        this.televisionRepository = televisionRepository;
+        this.remoteControllerRepository = remoteControllerRepository;}
+
+    // relatie one to one
+    @OneToOne(mappedBy = "remotecontroller")    @JsonIgnore
+    List<Television> televisions;
+
+// functie: assignRemoteControllerToTelevision....
+
+    public Television assignRemoteControllerToTelevision(){
+
+    }
+
+    //einde functie
+
+
 
     public List<Television> getAllTelevisions() {
         return televisionRepository.findAll();
