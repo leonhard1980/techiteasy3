@@ -5,6 +5,8 @@ import javax.persistence.*;
 @Entity
 public class Television {
 
+
+
     //  Een entiteit moet een primary key bevatten(id)
     @Id
     @GeneratedValue
@@ -69,6 +71,17 @@ public class Television {
 //        this.originalStock = originalStock;
 //        this.sold = sold;
 //    }
+
+   @OneToOne
+    private  RemoteController remoteController;
+
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
 
     //  Alle variable getters
     public Long getId() {
